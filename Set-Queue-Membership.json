@@ -1,0 +1,45 @@
+{
+  "name": "Set Queue Membership",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/routing/queues/${input.queueId}/members?delete=${input.delete}",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "[\n  {\n    \"id\": \"${input.userId}\"\n  }\n]"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "queueId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "delete": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
